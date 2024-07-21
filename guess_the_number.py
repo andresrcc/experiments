@@ -19,14 +19,17 @@ def guess_the_number():
             continue
 
         attempts += 1
-
+        attempts_left = max_attempts - attempts
+        difference = abs(random_number - user_input)
         if random_number == user_input:
             print("You guessed right!")
             break
-        elif user_input < random_number:
-            print("Too low!")
+        elif difference > 20 :
+            print(f"Far off! {'too low!' if user_input < random_number else 'too high!'} You have {attempts_left} attempts left!")
+        elif difference <= 10:
+            print(f"Very close! {'too low!' if user_input < random_number else 'too high!'} You have {attempts_left} attempts left!")
         else:
-            print("Too high! ")
+            print(f"Close! {'too low!' if user_input < random_number else 'too high!'} You have {attempts_left} attempts left!")
 
 def main():
     while True:
